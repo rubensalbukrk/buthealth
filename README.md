@@ -8,4 +8,9 @@ Calculos relacionados a area de saúde e fitness!
 <li>iMC</li>
 <li>Dieta</li>
 
-<h2>Versão 1.0.1</h2>
+<h2>Versão 1.0.2</h2>
+
+#FIXES
+<li>Aprimoramento de código</li>
+<li>Introdução de ContextAPI</li>
+<li>Adicionado UI DESIGN</li>
