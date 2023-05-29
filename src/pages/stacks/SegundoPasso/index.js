@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 import { AuthContext } from "../../../contexts/auth";
 import Field, {InputArea, Label, InputField} from "../../../../components/InputField";
 import GlobalStyle from "../../../../components/GlobalStyle";
-
+import * as Animatable from 'react-native-animatable'
 
 export default function SegundoPasso(){
     const { user, getInfo } = useContext(AuthContext)
@@ -20,49 +20,64 @@ export default function SegundoPasso(){
 
     return (
          <View style={styles.container}>
-            <Text style={[
+            <Animatable.Text style={[
                 GlobalStyle.CustomFont,
-                styles.titulo]}>AGORA INFORME SEUS DADOS O MAIS EXATO POSSÍVEL PARA O MELHOR RESULTADO</Text>
-            
-            <InputArea>
-            <Label>Altura</Label>
-            <TextInput
-            style={styles.input}
-             value={altura} 
-             onChangeText={(text) => setAltura(text)}
-             placeholder="Ex. 170"
-             keyboardType='numbers-and-punctuation'
-             />
-            </InputArea>
-          
+                styles.titulo]}
+                animation={'bounceIn'}
+                delay={800}
+                duration={1000}
+                >AGORA INFORME SEUS DADOS O MAIS EXATO POSSÍVEL PARA O MELHOR RESULTADO</Animatable.Text>
 
-            <InputArea>
-            <Label>Idade</Label>
-            <TextInput
-            style={styles.input}
-            value={idade}
-             onChangeText={(text) => setIdade(text)} 
-             placeholder="0"
-             keyboardType='numbers-and-punctuation'
-             />
-            </InputArea>
+            <Animatable.View
+            animation={'bounceIn'}
+            duration={1000}
+            delay={800}
+            >
+                <InputArea>
+                <Label>Altura</Label>
+                <TextInput
+                style={styles.input}
+                value={altura} 
+                onChangeText={(text) => setAltura(text)}
+                placeholder="Ex. 170"
+                keyboardType='numbers-and-punctuation'
+                />
+                </InputArea>
             
 
-            <InputArea>
-            <Label>Peso</Label>
-            <TextInput
-            style={styles.input}
-            value={peso}
-            onChangeText={(text) => setPeso(text)} 
-            placeholder="kgs"
-            keyboardType='numbers-and-punctuation' />
-            </InputArea>
+                <InputArea>
+                <Label>Idade</Label>
+                <TextInput
+                style={styles.input}
+                value={idade}
+                onChangeText={(text) => setIdade(text)} 
+                placeholder="0"
+                keyboardType='numbers-and-punctuation'
+                />
+                </InputArea>
+                
 
-        <TouchableOpacity 
-        style={styles.button}
-        onPress={handleGetInfo}>
-            <Image source={require('../../../images/icon-getstart.png')} />
-        </TouchableOpacity>
+                <InputArea>
+                <Label>Peso</Label>
+                <TextInput
+                style={styles.input}
+                value={peso}
+                onChangeText={(text) => setPeso(text)} 
+                placeholder="kgs"
+                keyboardType='numbers-and-punctuation' />
+                </InputArea>
+            </Animatable.View>
+
+            <Animatable.View
+            animation={'rubberBand'}
+            iterationCount={'infinite'}
+            
+            >
+                <TouchableOpacity style={styles.button} onPress={handleGetInfo}>
+                <Image source={require('../../../images/icon-getstart.png')} />
+                </TouchableOpacity>
+            </Animatable.View>
+            
          </View>
     )
 }

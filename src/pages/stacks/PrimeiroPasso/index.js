@@ -1,9 +1,10 @@
 import React,{ useContext, useState } from 'react';
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Animated, View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../../../contexts/auth';
 import GlobalStyle from '../../../../components/GlobalStyle';
-
 import Field, {InputArea, Label, InputField } from '../../../../components/InputField';
+import * as Animatable from 'react-native-animatable';
+
 
 export default function PrimeiroPasso() {
 
@@ -18,23 +19,49 @@ export default function PrimeiroPasso() {
     }
 
  return (
-   <View style={styles.container}>
-    <Text style={[GlobalStyle.CustomFont, styles.title]}>BUT HEALTH</Text>
+   <Animatable.View style={styles.container}
+   animation={'zoomInRight'}
+   duration={1300}
+   
+   >
+    <Animatable.Text 
+    style={[GlobalStyle.CustomFont, styles.title]}
+    animation={'bounceInDown'}
+    duration={1000}
+    delay={1200}
+    >BUT HEALTH</Animatable.Text>
       
-    <Text style={[GlobalStyle.CustomFont, styles.descricao]}>{`Primeiro informe
-seu nome!`}</Text>
+    <Animatable.Text style={[GlobalStyle.CustomFont, styles.descricao]}
+    animation={'bounceInRight'}
+    duration={1000}
+    delay={1400}
+    >{`Primeiro informe
+seu nome!`}</Animatable.Text>
 
-    <TextInput
-    style={styles.input} 
-    value={nome}
-    placeholder='João'
-    onChangeText={(text) => setNome(text)}></TextInput>
+    <Animatable.View
+    animation={'bounceInUp'}
+    duration={1000}
+    delay={300}
+    style={{width: '80%', justifyContent: 'center', alignItems: 'center'}}
+    >
+      <TextInput
+      style={styles.input} 
+      value={nome}
+      placeholder='João'
+      onChangeText={(text) => setNome(text)}></TextInput>
+    </Animatable.View>
+
+    <Animatable.View
+    animation={'rubberBand'}
+    iterationCount={'infinite'}
+    >
+        <TouchableOpacity style={styles.button} onPress={handleStarter}>
+          <Image source={require('../../../images/icon-getstart.png')} />
+        </TouchableOpacity>
+      </Animatable.View>
 
 
-    <TouchableOpacity style={styles.button} onPress={handleStarter}>
-      <Image source={require('../../../images/icon-getstart.png')} />
-    </TouchableOpacity>
-   </View>
+   </Animatable.View>
   );
 }
 

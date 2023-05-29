@@ -14,7 +14,6 @@ export default function MainStack(){
         return (
           <View style={{ flex: 1, height: 200, alignItems: 'center', justifyContent: 'center', backgroundColor: '#8A84E2' }}>
             <SegundoPasso />
-            <Button onPress={() => navigation.goBack()} title="VOLTAR" />
           </View>
         );
       }
@@ -36,6 +35,7 @@ export default function MainStack(){
         </Stack.Group>
         <Stack.Group screenOptions={{ 
             presentation: 'modal',
+            freezeOnBlur: true,
             headerBackTitleVisible: false,
             headerTitle: 'Segundo passo',
             headerTitleStyle: {

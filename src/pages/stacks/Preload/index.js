@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text , ActivityIndicator} from "react-native";
+import { View, ActivityIndicator} from "react-native";
 
 
 export default function Preload(){
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#8A84E2'}}>
-            <ActivityIndicator  size={32} color={'white'} />
+            <ActivityIndicator  size={'large'} color={'white'} />
         </View>
     )
 };
