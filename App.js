@@ -1,15 +1,29 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
-
-import { NavigationContainer } from '@react-navigation/native'
-import Routes from './src/routes';
+import React, {useContext, useCallback} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthProvider from './src/contexts/auth';
+import AppStack from './src/pages/appStack';
+import MainStack from './src/pages/mainStack';
+import { useFonts } from 'expo-font';
+import Preload from './src/pages/stacks/Preload';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Doppio One': require('./assets/fonts/DoppioOne-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <Preload />;
+  }
+
+  const auth = false;
+  
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor='#fff' barStyle="light-content" />
-      <Routes />
-    </NavigationContainer>
-
-  );
+        <AuthProvider>
+            
+              {!auth ? <MainStack /> : <AppStack />}
+  
+        </AuthProvider>  
+      </NavigationContainer>
+    );
 }
